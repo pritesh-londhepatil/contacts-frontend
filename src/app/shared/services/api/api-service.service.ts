@@ -58,4 +58,17 @@ export class ApiServiceService {
         })
       );
   }
+
+  deleteContact(contactId: string): Observable<Contacts> {
+    return this.http
+      .delete<Contacts>(`${this.apiUrl}/contacts/${contactId}`)
+      .pipe(
+        map((contacts) => {
+          this.contactsList.update((prev) =>
+            prev.filter((c) => c._id !== contactId)
+          );
+          return contacts;
+        })
+      );
+  }
 }

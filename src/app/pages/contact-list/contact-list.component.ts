@@ -3,6 +3,7 @@ import { ApiServiceService } from '../../shared/services/api/api-service.service
 import { DialogService } from '../../shared/services/dialog/dialog.service';
 import { AddEditContactComponent } from '../../shared/component/add-edit-contact/add-edit-contact.component';
 import { Contacts } from '../../core/contacts';
+import { DeleteContactComponent } from '../delete-contact/delete-contact.component';
 
 @Component({
   selector: 'app-contact-list',
@@ -34,6 +35,15 @@ export class ContactListComponent {
     console.log('contact list component ', contact);
     this.dialogService.openModal(AddEditContactComponent, {
       modalId: 'addEditContactModal',
+      props: {
+        contact: contact,
+      },
+    });
+  }
+
+  public deleteContact(contact: Contacts) {
+    this.dialogService.openModal(DeleteContactComponent, {
+      modalId: 'deleteContactModal',
       props: {
         contact: contact,
       },

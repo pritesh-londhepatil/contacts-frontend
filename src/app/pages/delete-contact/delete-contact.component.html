@@ -1,0 +1,21 @@
+<div class="d-flex flex-column gap-4 p-4">
+  <h1 class="onest-bold mb-4">Delete Contact</h1>
+  <p class="onest-regular mb-4">
+    Are you sure you want to delete this contact?
+  </p>
+  <div class="d-flex gap-2">
+    <button
+      class="btn btn-danger flex-grow-1"
+      (click)="deleteContact().subscribe()"
+    >
+      @if (isLoading()) {
+      <div class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      } @else { Delete }
+    </button>
+    <button class="btn btn-secondary flex-grow-1" (click)="close()">
+      Cancel
+    </button>
+  </div>
+</div>
