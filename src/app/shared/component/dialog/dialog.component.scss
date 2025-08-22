@@ -1,0 +1,22 @@
+.modal {
+  .modal-dialog {
+    .modal-content {
+      border-radius: 16px;
+      border: 0;
+    }
+
+    &.modal-dialog-bottom {
+      @media screen and (max-width: 767px) {
+        align-items: flex-end;
+        margin: 0;
+        height: 100%;
+      }
+
+      .modal-content {
+        @media screen and (max-width: 767px) {
+          border-radius: 16px 16px 0 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<section class="container border-1 shadow p-4 my-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="text-center onest-bold mb-5">Contact List</h1>
+    <button class="btn btn-primary" (click)="addContact()">Add Contact</button>
+  </div>
+  @if (isLoading()) {
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  } @else {
+  <div class="row">
+    @for (contact of contacts(); track $index) {
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title onest-medium mb-3">{{ contact.name }}</h5>
+          <p class="card-text onest-regular mb-0">{{ contact.email }}</p>
+          <p class="card-text onest-regular">{{ contact.phoneNumber }}</p>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary flex-grow-1">Edit</button>
+            <button class="btn btn-danger flex-grow-1">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</section>

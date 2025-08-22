@@ -1,0 +1,48 @@
+<div class="p-4">
+  <h1 class="onest-bold mb-4">Add Contact</h1>
+  <form
+    class="d-flex flex-column gap-3"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="updateContactForm"
+  >
+    <div class="form-group">
+      <label for="name" class="onest-medium">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email" class="onest-medium">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone" class="onest-medium">Phone</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+      />
+    </div>
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary flex-grow-1 onest-medium">
+        Save
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary flex-grow-1 onest-medium"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

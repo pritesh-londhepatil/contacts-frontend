@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+
+body {
+  font-family: "Onest", sans-serif !important;
+}
+
+.onest-regular {
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.onest-medium {
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.onest-bold {
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}

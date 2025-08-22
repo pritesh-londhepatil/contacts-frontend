@@ -1,0 +1,18 @@
+<!-- DialogComponent Template -->
+<div
+  class="modal fade"
+  [id]="modalId"
+  [attr.aria-labelledby]="modalId"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered"
+    [ngClass]="cssClass"
+    [class.modal-dialog-bottom]="modalId === 'detailedGuideModal'"
+  >
+    <div class="modal-content">
+      <ng-template #container (closeEvent)="close($event)"></ng-template>
+    </div>
+  </div>
+</div>
