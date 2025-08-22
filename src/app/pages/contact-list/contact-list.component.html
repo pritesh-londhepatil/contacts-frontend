@@ -20,7 +20,12 @@
           <p class="card-text onest-regular">{{ contact.phoneNumber }}</p>
 
           <div class="d-flex gap-2">
-            <button class="btn btn-primary flex-grow-1">Edit</button>
+            <button
+              class="btn btn-primary flex-grow-1"
+              (click)="editContact(contact)"
+            >
+              Edit
+            </button>
             <button class="btn btn-danger flex-grow-1">Delete</button>
           </div>
         </div>
