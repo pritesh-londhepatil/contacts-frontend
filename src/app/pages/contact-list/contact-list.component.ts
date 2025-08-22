@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { ApiServiceService } from '../../shared/services/api/api-service.service';
 import { DialogService } from '../../shared/services/dialog/dialog.service';
 import { AddEditContactComponent } from '../../shared/component/add-edit-contact/add-edit-contact.component';
@@ -17,12 +17,34 @@ export class ContactListComponent {
 
   private readonly dialogService = inject(DialogService);
 
-  public readonly contacts = computed(() => this.apiService.contactsList());
-
   public readonly isLoading = this.apiService.isLoading;
+
+  public readonly searchTerm = signal('');
+
+  public readonly contacts = computed(() => {
+    const allContacts = this.apiService.contactsList();
+    const searchTerm = this.searchTerm().trim().toLowerCase();
+
+    if (!searchTerm) {
+      return allContacts;
+    }
+
+    return allContacts.filter((contact) => {
+      const nameMatch = contact.name.toLowerCase().includes(searchTerm);
+      const emailMatch = contact.email.toLowerCase().includes(searchTerm);
+      const phoneMatch = contact.phoneNumber.toLowerCase().includes(searchTerm);
+      return nameMatch || emailMatch || phoneMatch;
+    });
+  });
 
   constructor() {
     this.apiService.autoLoadContacts();
+  }
+
+  public onSearchChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm.set(input.value);
+    console.log('search term ', this.searchTerm());
   }
 
   public addContact() {
