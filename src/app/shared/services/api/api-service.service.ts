@@ -45,4 +45,17 @@ export class ApiServiceService {
       })
     );
   }
+
+  updateContact(contact: Contacts): Observable<Contacts> {
+    return this.http
+      .put<Contacts>(`${this.apiUrl}/contacts/${contact._id}`, contact)
+      .pipe(
+        map((contacts) => {
+          this.contactsList.update((prev) =>
+            prev.map((c) => (c._id === contact._id ? contacts : c))
+          );
+          return contacts;
+        })
+      );
+  }
 }
